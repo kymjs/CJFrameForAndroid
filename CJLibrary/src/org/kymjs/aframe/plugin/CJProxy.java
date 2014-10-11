@@ -39,7 +39,7 @@ import android.view.WindowManager.LayoutParams;
  * @author kymjs(kymjs123@gmail.com)
  * @version 1.0
  */
-public class CJProxyActivity extends Activity {
+public class CJProxy extends Activity {
 
     private String mClass; // 插件Activity的完整类名（可选传入）
     private int mAtyIndex; // 插件Activity在插件Manifest.xml中的序列（可选传入）

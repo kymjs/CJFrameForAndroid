@@ -41,7 +41,7 @@ public class CJActivityUtils {
      */
     public static Intent getPluginIntent(Context cxt, String apkPath) {
         Intent intent = new Intent();
-        intent.setClass(cxt, CJProxyActivity.class);
+        intent.setClass(cxt, CJProxy.class);
         intent.putExtra(CJConfig.KEY_DEX_PATH, apkPath);
         return intent;
     }
