@@ -19,7 +19,7 @@ CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD�
 ----
 
 # 注意事项
->使用 CJFrameForAndroid 插件开发框架需要在你项目的AndroidManifest.xml文件中加入以下Activity声明：*
+>使用 CJFrameForAndroid 插件开发框架需要在你项目的AndroidManifest.xml文件中加入以下Activity声明：
 ```xml
 <activity android:name="org.kymjs.aframe.plugin.CJProxyActivity" />
 ```

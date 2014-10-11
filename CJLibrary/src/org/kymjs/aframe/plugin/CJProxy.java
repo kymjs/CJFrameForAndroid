@@ -30,9 +30,9 @@ import android.view.MotionEvent;
 import android.view.WindowManager.LayoutParams;
 
 /**
- * 插件Activity在APP中的代理实现类。<br>
+ * 插件Activity的托管所，将负责管理插件Activity中的全部事务（包括生命周期与交互事件）<br>
  * 
- * <b>描述</b>对于APP来说，插件应用的所有Activity都是CJProxyActivity，
+ * <b>描述</b>对于APP来说，插件应用的所有Activity都是CJProxy，
  * 只不过每个Activity在启动时传递的CJConfig.KEY_EXTRA_CLASS不同。<br>
  * <b>创建时间</b> 2014-10-11 <br>
  * 
