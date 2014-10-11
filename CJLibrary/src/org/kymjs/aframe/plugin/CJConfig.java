@@ -20,8 +20,4 @@ public class CJConfig {
 
     public static final String PROXY_ACTIVITY = "org.kymjs.cjframe.activity";
     public static final String PROXY_FRAGMENT = "org.kymjs.cjframe.fragment";
-    // public static final String PROXY_ACTIVITY_VIEW_ACTION =
-    // "com.ryg.dynamicload.proxy.activity.VIEW";
-    // public static final String PROXY_FRAGMENT_ACTIVITY_VIEW_ACTION =
-    // "com.ryg.dynamicload.proxy.fragmentactivity.VIEW";
 }
