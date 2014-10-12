@@ -5,13 +5,14 @@
 * QQ群：[257053751](http://shang.qq.com/wpa/qunwpa?idkey=00d92c040e81d87ccd21f8d0fffb10640baaa66da45254c3bd329b6ff7d46fef)(开发者群1)，[201055521](http://jq.qq.com/?_wv=1027&k=MBVdpK)(开发者群2)
 * 项目地址：[https://github.com/kymjs/CJFrameForAndroid](https://github.com/kymjs/CJFrameForAndroid)
 * 相关框架: [KJFrameForAndroid](https://github.com/kymjs/KJFrameForAndroid)
+
 ---
 # 名词解释
-<b>APP项目</b>：指要调用插件apk的那个已经安装到用户手机上的应用。<br>
-<b>插件项目</b>：指没有被安装且希望借助已经安装到手机上的项目运行的apk。<br>
-<b>插件化</b>：Activity继承自CJActivity，且与APP项目jar包冲突已经解决的插件项目称为已经被插件化。<br>
-<b>Activity事务</b>：在CJFrameForAndroid中，一个Activity的生命周期以及交互事件统称为Activity的事务。<br>
-<b>托管所</b>：指插件中的一个委派/代理Activity，通过这个Activity去处理插件中Activity的全部事务，从而表现为就像插件中的Activity在运行一样。<br>
+**APP项目**：指要调用插件apk的那个已经安装到用户手机上的应用。<br>
+**插件项目**：指没有被安装且希望借助已经安装到手机上的项目运行的apk。<br>
+**插件化**：Activity继承自CJActivity，且与APP项目jar包冲突已经解决的插件项目称为已经被插件化。<br>
+**Activity事务**：在CJFrameForAndroid中，一个Activity的生命周期以及交互事件统称为Activity的事务。<br>
+**托管所**：指插件中的一个委派/代理Activity，通过这个Activity去处理插件中Activity的全部事务，从而表现为就像插件中的Activity在运行一样。<br>
 
 # 原理描述
 CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD卡上的apk包中的Activity。通过使用一个托管所，插件Activity全部事务(包括声明周期与交互事件)将交由托管所来处理，间接实现插件的运行。<br>
