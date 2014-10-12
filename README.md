@@ -46,6 +46,26 @@ CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD�
 ●在插件Activity跳转时，推荐使用CJActivityUtils类来辅助跳转；<br>
 ●在插件和APP两个工程中不能引用相同的jar包；<br>
 
-# 最后的说明
+## 许可
+**本项目采用 Apache Licence 2.0 授权协议:<br>
+Apache Licence是著名的非盈利开源组织Apache采用的协议。该协议和BSD类似，同样鼓励代码共享和尊重原作者的著作权，同样允许代码修改，再发布（作为开源或商业软件）[更多...](http://www.oschina.net/question/12_2828)<br>
+  Copyright (c) 2014, KJFrameForAndroid Open Source Project, Zhang Tao.
+ 
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+	   
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+## 关于作者kymjs
+blog：http://my.oschina.net/kymjs/blog<br>
+email：kymjs123@gmail.com<br>
+forum/bbs: [http://tieba.baidu.com/f?kw=kym%BD%A9%CA%AC&fr=index](http://tieba.baidu.com/f?kw=kym%BD%A9%CA%AC&fr=index)<br>
 本框架目前仅仅是一个开发阶段，仅仅是实现了插件Activity的运行（原理上来说，动态注册的广播也可以运行），而Service、contentProvider都没办法使用，这些都仍在研究中。<br>
-在未来的某一天，也许会将这个CJFrameForAndroid插件框架与KJFrameForAndroid快捷开发框架合并，组成一个更完善应用开发框架，对自己说：加油！
+在未来的某一天，也许会将这个CJFrameForAndroid插件框架与KJFrameForAndroid快捷开发框架合并，组成一个更完善应用开发框架，对自己说：加油！<br>
