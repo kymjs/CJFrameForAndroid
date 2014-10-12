@@ -37,7 +37,6 @@ public class CJActivityUtils {
      *            上下文
      * @param apkPath
      *            插件所在绝对路径
-     * @return
      */
     public static Intent getPluginIntent(Context cxt, String apkPath) {
         Intent intent = new Intent();
@@ -73,7 +72,6 @@ public class CJActivityUtils {
      *            插件所在绝对路径
      * @param pluginClass
      *            要启动的Activity的clazz，该clazz必须是CJActivity的子类
-     * @return
      */
     public static Intent getPluginIntent(Context cxt, String apkPath,
             Class<?> pluginClass) {
@@ -122,11 +120,23 @@ public class CJActivityUtils {
      *            插件所在绝对路径
      * @param pluginClass
      *            要启动的Activity的clazz，该clazz必须是CJActivity的子类
-     * @return
      */
     public static void launchPlugin(Context cxt, String apkPath,
             Class<?> pluginClass) {
         cxt.startActivity(getPluginIntent(cxt, apkPath, pluginClass));
+    }
+
+    /**
+     * 启动插件Activity<br>
+     * <b>注意</b>本方法仅能用在插件做为独立APP运行时使用<br>
+     * 
+     * @param cxt
+     *            上下文
+     * @param pluginClass
+     *            要启动的Activity的clazz，该clazz必须是CJActivity的子类
+     */
+    public static void launchPlugin(Context cxt, Class<?> pluginClass) {
+        cxt.startActivity(getPluginIntent(cxt, "/CJLibrary", pluginClass));
     }
 
     /**
@@ -162,18 +172,27 @@ public class CJActivityUtils {
 
     /**
      * 跳转到插件Activity<br>
+     * <b>注意</b>本方法仅能用在插件做为独立APP运行时使用<br>
      * 
      * @param cxt
      *            上下文
-     * @param apkPath
-     *            插件所在绝对路径
      * @param pluginClass
      *            要启动的Activity的clazz，该clazz必须是CJActivity的子类
-     * @return
      */
-    public static void skipPlugin(Activity aty, String apkPath,
+    public static void skipPlugin(Activity aty, Class<?> pluginClass) {
+        launchPlugin(aty, pluginClass);
+        aty.finish();
+    }
+
+    /**
+     * 跳转到插件Activity<br>
+     * 
+     * @param aty
+     * @param pluginClass
+     */
+    public static void skipPlugin(Activity aty, String dexPath,
             Class<?> pluginClass) {
-        launchPlugin(aty, apkPath, pluginClass);
+        launchPlugin(aty, dexPath, pluginClass);
         aty.finish();
     }
 }
