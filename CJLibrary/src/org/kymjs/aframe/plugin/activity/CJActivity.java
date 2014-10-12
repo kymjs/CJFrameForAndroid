@@ -13,7 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.kymjs.aframe.plugin;
+package org.kymjs.aframe.plugin.activity;
+
+import org.kymjs.aframe.plugin.CJConfig;
 
 import android.app.Activity;
 import android.content.Context;
@@ -43,7 +45,7 @@ public abstract class CJActivity extends Activity implements I_CJActivity {
      * that指针指向的是当前插件的Context（由于是插件化开发，this指针绝对不能使用）
      */
     protected Activity that; // 替代this指针
-    protected String mDexPath;
+    protected String mDexPath = CJConfig.DEF_STR;
     protected int mFrom = CJConfig.FROM_PLUGIN;
 
     /**
@@ -65,54 +67,6 @@ public abstract class CJActivity extends Activity implements I_CJActivity {
         if (mFrom == CJConfig.FROM_PLUGIN) {
             super.onCreate(savedInstanceState);
             that = this;
-        }
-    }
-
-    /**
-     * 如果你想从插件Activity跳转到app的Activity，你不能使用startActivity()
-     */
-    protected void startActivityByApp(Class<?> cls) {
-        startActivityByApp(cls.getName());
-    }
-
-    /**
-     * 如果你想从插件Activity跳转到app的Activity，你不能使用startActivity()
-     */
-    protected void startActivityForResultByApp(Class<?> cls, int requestCode) {
-        startActivityForResultByApp(cls.getName(), requestCode);
-    }
-
-    /**
-     * 如果你想从插件Activity跳转到app的Activity，你不能使用startActivity()
-     */
-    protected void startActivityByApp(String className) {
-        if (mFrom == CJConfig.FROM_PLUGIN) {
-            Intent intent = new Intent();
-            intent.setClassName(this, className);
-            that.startActivity(intent);
-        } else {
-            Intent intent = new Intent(CJTool.getProxyViewAction(className,
-                    getClassLoader()));
-            intent.putExtra(CJConfig.KEY_DEX_PATH, mDexPath);
-            intent.putExtra(CJConfig.KEY_EXTRA_CLASS, className);
-            that.startActivity(intent);
-        }
-    }
-
-    /**
-     * 如果你想从插件Activity跳转到app的Activity，你不能使用startActivityForResult(String,int)
-     */
-    public void startActivityForResultByApp(String className, int requestCode) {
-        if (mFrom == CJConfig.FROM_PLUGIN) {
-            Intent intent = new Intent();
-            intent.setClassName(this, className);
-            that.startActivityForResult(intent, requestCode);
-        } else {
-            Intent intent = new Intent(CJTool.getProxyViewAction(className,
-                    getClassLoader()));
-            intent.putExtra(CJConfig.KEY_DEX_PATH, mDexPath);
-            intent.putExtra(CJConfig.KEY_EXTRA_CLASS, className);
-            that.startActivityForResult(intent, requestCode);
         }
     }
 

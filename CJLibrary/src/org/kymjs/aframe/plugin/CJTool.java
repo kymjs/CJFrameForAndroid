@@ -16,12 +16,14 @@
 package org.kymjs.aframe.plugin;
 
 import org.kymjs.aframe.plugin.CJConfig.ActivityType;
+import org.kymjs.aframe.plugin.activity.CJActivity;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 
@@ -51,7 +53,11 @@ public class CJTool {
             pkgInfo = pm.getPackageArchiveInfo(apkPath,
                     PackageManager.GET_ACTIVITIES);
         } catch (Exception e) {
-            e.printStackTrace();
+            try {
+                pkgInfo = pm.getPackageInfo(cxt.getPackageName(),
+                        PackageManager.GET_ACTIVITIES);
+            } catch (NameNotFoundException e1) {
+            }
         }
         return pkgInfo;
     }

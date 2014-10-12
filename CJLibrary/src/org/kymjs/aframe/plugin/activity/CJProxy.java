@@ -13,10 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.kymjs.aframe.plugin;
+package org.kymjs.aframe.plugin.activity;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+
+import org.kymjs.aframe.plugin.CJClassLoader;
+import org.kymjs.aframe.plugin.CJConfig;
+import org.kymjs.aframe.plugin.CJTool;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -41,9 +45,9 @@ import android.view.WindowManager.LayoutParams;
  */
 public class CJProxy extends Activity {
 
-    private String mClass; // 插件Activity的完整类名（可选传入）
-    private int mAtyIndex; // 插件Activity在插件Manifest.xml中的序列（可选传入）
-    private String mDexPath; // 插件所在绝对路径（必须传入）
+    private int mAtyIndex; // 插件Activity在插件Manifest.xml中的序列（可选）
+    private String mClass; // 插件Activity的完整类名（可选）
+    private String mDexPath; // 插件所在绝对路径（必传）
 
     private Theme mTheme; // 托管插件的样式
     private Resources mResources; // 托管插件的资源
@@ -71,20 +75,36 @@ public class CJProxy extends Activity {
      * 通过反射，获取到插件的资源访问器
      */
     protected void initResources() {
-        try {
-            AssetManager assetManager = AssetManager.class.newInstance();
-            Method addAssetPath = assetManager.getClass().getMethod(
-                    "addAssetPath", String.class);
-            addAssetPath.invoke(assetManager, mDexPath);
-            mAssetManager = assetManager;
-        } catch (Exception e) {
-            e.printStackTrace();
+        // 如果是独立运行插件程序，mDexPath会有一个默认值
+        if (CJConfig.DEF_STR.equals(mDexPath)) {
+            defResources();
+        } else {
+            try {
+                AssetManager assetManager = AssetManager.class.newInstance();
+                Method addAssetPath = assetManager.getClass().getMethod(
+                        "addAssetPath", String.class);
+                addAssetPath.invoke(assetManager, mDexPath);
+                mAssetManager = assetManager;
+                Resources superRes = super.getResources();
+                mResources = new Resources(mAssetManager,
+                        superRes.getDisplayMetrics(),
+                        superRes.getConfiguration());
+                mTheme = mResources.newTheme();
+                mTheme.setTo(super.getTheme());
+            } catch (Exception e) {
+                // 必须保证资源系统的正常
+                defResources();
+            }
         }
-        Resources superRes = super.getResources();
-        mResources = new Resources(mAssetManager, superRes.getDisplayMetrics(),
-                superRes.getConfiguration());
-        mTheme = mResources.newTheme();
-        mTheme.setTo(super.getTheme());
+    }
+
+    /**
+     * 默认的Res
+     */
+    private void defResources() {
+        mResources = this.getResources();
+        mAssetManager = this.getAssets();
+        mTheme = this.getTheme();
     }
 
     /**
@@ -94,8 +114,7 @@ public class CJProxy extends Activity {
         PackageInfo packageInfo = CJTool.getAppInfo(this, mDexPath);
         if ((packageInfo.activities != null)
                 && (packageInfo.activities.length > 0)) {
-            String activityName = packageInfo.activities[mAtyIndex].name;
-            mClass = activityName;
+            mClass = packageInfo.activities[mAtyIndex].name;
             launchPluginActivity(mClass);
         }
     }
@@ -108,7 +127,12 @@ public class CJProxy extends Activity {
      */
     protected void launchPluginActivity(final String className) {
         try {
-            Class<?> atyClass = getClassLoader().loadClass(className);
+            Class<?> atyClass;
+            if (CJConfig.DEF_STR.equals(mDexPath)) {
+                atyClass = super.getClassLoader().loadClass(className);
+            } else {
+                atyClass = this.getClassLoader().loadClass(className);
+            }
             Constructor<?> atyConstructor = atyClass
                     .getConstructor(new Class[] {});
             Object instance = atyConstructor.newInstance(new Object[] {});
@@ -118,7 +142,6 @@ public class CJProxy extends Activity {
             bundle.putInt(CJConfig.FROM, CJConfig.FROM_PROXY_APP);
             mPluginAty.onCreate(bundle);
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

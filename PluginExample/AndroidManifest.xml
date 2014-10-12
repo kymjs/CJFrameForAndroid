@@ -22,7 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="org.kymjs.aframe.plugin.CJProxy" />
+        <activity android:name="org.kymjs.aframe.plugin.activity.CJProxy" />
+        <service 
+            android:name="org.kymjs.aframe.plugin.service.TestService"/>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package org.kymjs.aframe.plugin;
 
+import org.kymjs.aframe.plugin.activity.CJActivity;
 import org.kymjs.aframe.plugin.example.R;
 import org.kymjs.aframe.plugin.fragment.TestFragment;
 

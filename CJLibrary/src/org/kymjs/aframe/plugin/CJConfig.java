@@ -24,6 +24,7 @@ package org.kymjs.aframe.plugin;
  * @version 1.0
  */
 public class CJConfig {
+    public static final String DEF_STR = "CJFrameForAndroid_defualt_Str";
     public static final String FROM = "fromWhichActivity";
     public static final int FROM_PLUGIN = 0;
     public static final int FROM_PROXY_APP = 1;

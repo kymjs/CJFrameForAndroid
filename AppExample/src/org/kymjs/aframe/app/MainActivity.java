@@ -1,6 +1,6 @@
 package org.kymjs.aframe.app;
 
-import org.kymjs.aframe.plugin.CJActivityUtils;
+import org.kymjs.aframe.plugin.activity.CJActivityUtils;
 
 import android.app.Activity;
 import android.os.Bundle;

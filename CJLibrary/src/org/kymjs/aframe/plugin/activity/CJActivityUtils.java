@@ -13,7 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.kymjs.aframe.plugin;
+package org.kymjs.aframe.plugin.activity;
+
+import org.kymjs.aframe.plugin.CJConfig;
 
 import android.app.Activity;
 import android.content.Context;
@@ -136,7 +138,7 @@ public class CJActivityUtils {
      *            要启动的Activity的clazz，该clazz必须是CJActivity的子类
      */
     public static void launchPlugin(Context cxt, Class<?> pluginClass) {
-        cxt.startActivity(getPluginIntent(cxt, "/CJLibrary", pluginClass));
+        cxt.startActivity(getPluginIntent(cxt, CJConfig.DEF_STR, pluginClass));
     }
 
     /**

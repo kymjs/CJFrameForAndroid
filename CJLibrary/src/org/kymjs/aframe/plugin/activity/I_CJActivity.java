@@ -13,7 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.kymjs.aframe.plugin;
+package org.kymjs.aframe.plugin.activity;
+
+import org.kymjs.aframe.plugin.I_CJPlugin;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -31,7 +33,7 @@ import android.view.WindowManager.LayoutParams;
  * @author kymjs(kymjs123@gmail.com)
  * @version 1.0
  */
-public interface I_CJActivity {
+public interface I_CJActivity extends I_CJPlugin {
     public void onCreate(Bundle savedInstanceState);
 
     public void onStart();
