@@ -68,4 +68,5 @@ blog：http://my.oschina.net/kymjs/blog<br>
 email：kymjs123@gmail.com<br>
 forum/bbs: [http://tieba.baidu.com/f?kw=kym%BD%A9%CA%AC&fr=index](http://tieba.baidu.com/f?kw=kym%BD%A9%CA%AC&fr=index)<br>
 本框架目前仅仅是一个开发阶段，仅仅是实现了插件Activity的运行（原理上来说，动态注册的广播也可以运行），而Service、contentProvider都没办法使用，这些都仍在研究中。<br>
+接下来打算实现的是：Activity launchModer的支持，Service的支持。<br>
 在未来的某一天，也许会将这个CJFrameForAndroid插件框架与KJFrameForAndroid快捷开发框架合并，组成一个更完善应用开发框架，对自己说：加油！<br>
