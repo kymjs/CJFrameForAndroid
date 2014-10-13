@@ -24,5 +24,4 @@ package org.kymjs.aframe.plugin;
  * @version 1.0
  */
 public class PluginApplication implements I_CJPlugin {
-
 }

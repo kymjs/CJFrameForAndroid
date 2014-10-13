@@ -59,7 +59,8 @@ public class CJActivityUtils {
      * @throws ArrayIndexOutOfBoundsException
      *             index超出范围会报
      */
-    public static Intent getPluginIntent(Context cxt, int index, String apkPath) {
+    public static Intent getPluginIntent(Context cxt, int index,
+            String apkPath) {
         Intent intent = getPluginIntent(cxt, apkPath);
         intent.putExtra(CJConfig.KEY_ATY_INDEX, index);
         return intent;
@@ -79,7 +80,8 @@ public class CJActivityUtils {
             Class<?> pluginClass) {
         Intent intent = getPluginIntent(cxt, apkPath);
         if (pluginClass.asSubclass(CJActivity.class) != null) {
-            intent.putExtra(CJConfig.KEY_EXTRA_CLASS, pluginClass.getName());
+            intent.putExtra(CJConfig.KEY_EXTRA_CLASS,
+                    pluginClass.getName());
         }
         return intent;
     }
@@ -109,7 +111,8 @@ public class CJActivityUtils {
      * @throws ArrayIndexOutOfBoundsException
      *             index超出范围会报
      */
-    public static void launchPlugin(Context cxt, int index, String apkPath) {
+    public static void launchPlugin(Context cxt, int index,
+            String apkPath) {
         cxt.startActivity(getPluginIntent(cxt, index, apkPath));
     }
 
@@ -138,7 +141,8 @@ public class CJActivityUtils {
      *            要启动的Activity的clazz，该clazz必须是CJActivity的子类
      */
     public static void launchPlugin(Context cxt, Class<?> pluginClass) {
-        cxt.startActivity(getPluginIntent(cxt, CJConfig.DEF_STR, pluginClass));
+        cxt.startActivity(getPluginIntent(cxt, CJConfig.DEF_STR,
+                pluginClass));
     }
 
     /**
@@ -167,7 +171,8 @@ public class CJActivityUtils {
      * @throws ArrayIndexOutOfBoundsException
      *             index超出范围会报
      */
-    public static void skipPlugin(Activity aty, int index, String apkPath) {
+    public static void skipPlugin(Activity aty, int index,
+            String apkPath) {
         launchPlugin(aty, index, apkPath);
         aty.finish();
     }

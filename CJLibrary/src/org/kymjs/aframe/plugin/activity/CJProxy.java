@@ -59,9 +59,12 @@ public class CJProxy extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent fromAppIntent = getIntent();
-        mClass = fromAppIntent.getStringExtra(CJConfig.KEY_EXTRA_CLASS);
-        mAtyIndex = fromAppIntent.getIntExtra(CJConfig.KEY_ATY_INDEX, 0);
-        mDexPath = fromAppIntent.getStringExtra(CJConfig.KEY_DEX_PATH);
+        mClass = fromAppIntent
+                .getStringExtra(CJConfig.KEY_EXTRA_CLASS);
+        mAtyIndex = fromAppIntent.getIntExtra(CJConfig.KEY_ATY_INDEX,
+                0);
+        mDexPath = fromAppIntent
+                .getStringExtra(CJConfig.KEY_DEX_PATH);
         initResources();
         if (mClass == null) {
             launchPluginActivity();
@@ -80,9 +83,10 @@ public class CJProxy extends Activity {
             defResources();
         } else {
             try {
-                AssetManager assetManager = AssetManager.class.newInstance();
-                Method addAssetPath = assetManager.getClass().getMethod(
-                        "addAssetPath", String.class);
+                AssetManager assetManager = AssetManager.class
+                        .newInstance();
+                Method addAssetPath = assetManager.getClass()
+                        .getMethod("addAssetPath", String.class);
                 addAssetPath.invoke(assetManager, mDexPath);
                 mAssetManager = assetManager;
                 Resources superRes = super.getResources();
@@ -129,13 +133,15 @@ public class CJProxy extends Activity {
         try {
             Class<?> atyClass;
             if (CJConfig.DEF_STR.equals(mDexPath)) {
-                atyClass = super.getClassLoader().loadClass(className);
+                atyClass = super.getClassLoader()
+                        .loadClass(className);
             } else {
                 atyClass = this.getClassLoader().loadClass(className);
             }
             Constructor<?> atyConstructor = atyClass
                     .getConstructor(new Class[] {});
-            Object instance = atyConstructor.newInstance(new Object[] {});
+            Object instance = atyConstructor
+                    .newInstance(new Object[] {});
             setRemoteActivity(instance);
             mPluginAty.setProxy(this, mDexPath);
             Bundle bundle = new Bundle();
@@ -159,7 +165,8 @@ public class CJProxy extends Activity {
 
     @Override
     public AssetManager getAssets() {
-        return mAssetManager == null ? super.getAssets() : mAssetManager;
+        return mAssetManager == null ? super.getAssets()
+                : mAssetManager;
     }
 
     @Override
@@ -174,12 +181,13 @@ public class CJProxy extends Activity {
 
     @Override
     public ClassLoader getClassLoader() {
-        return CJClassLoader.getClassLoader(mDexPath, getApplicationContext(),
-                super.getClassLoader());
+        return CJClassLoader.getClassLoader(mDexPath,
+                getApplicationContext(), super.getClassLoader());
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode,
+            Intent data) {
         mPluginAty.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
     }

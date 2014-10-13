@@ -32,7 +32,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 /**
- * 插件Activity的基类，若要使用CJFrame，必须使用本基类作为BaseActivity<br>
+ * 插件Activity的基类，若要使用CJFrame，必须继承本基类<br>
  * 
  * <b>注意</b> 在CJActivity以及子类中，绝对不可以使用this调用，应该使用that调用<br>
  * <b>创建时间</b> 2014-10-11 <br>
@@ -40,13 +40,28 @@ import android.view.WindowManager;
  * @author kymjs(kymjs123@gmail.com)
  * @version 1.0
  */
-public abstract class CJActivity extends Activity implements I_CJActivity {
+public abstract class CJActivity extends Activity implements
+        I_CJActivity {
     /**
      * that指针指向的是当前插件的Context（由于是插件化开发，this指针绝对不能使用）
      */
     protected Activity that; // 替代this指针
     protected String mDexPath = CJConfig.DEF_STR;
     protected int mFrom = CJConfig.FROM_PLUGIN;
+
+    public static enum LunchMode {
+        STANDARD, SINGLETOP, SINGLETASK, SINGLEINSTANCE
+    }
+
+    private LunchMode lunchMode = LunchMode.SINGLETOP;
+
+    public void setLunchMode(LunchMode lunchMode) {
+        this.lunchMode = lunchMode;
+    }
+
+    public LunchMode getLunchMode() {
+        return lunchMode;
+    }
 
     /**
      * 设置托管Activity，并将that指针指向那个托管的Activity
@@ -152,7 +167,8 @@ public abstract class CJActivity extends Activity implements I_CJActivity {
     }
 
     @Override
-    public SharedPreferences getSharedPreferences(String name, int mode) {
+    public SharedPreferences getSharedPreferences(String name,
+            int mode) {
         if (mFrom == CJConfig.FROM_PLUGIN) {
             return super.getSharedPreferences(name, mode);
         } else {
@@ -213,7 +229,8 @@ public abstract class CJActivity extends Activity implements I_CJActivity {
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode,
+            Intent data) {
         if (mFrom == CJConfig.FROM_PLUGIN) {
             super.onActivityResult(requestCode, resultCode, data);
         }
@@ -299,7 +316,8 @@ public abstract class CJActivity extends Activity implements I_CJActivity {
     }
 
     @Override
-    public void onWindowAttributesChanged(WindowManager.LayoutParams params) {
+    public void onWindowAttributesChanged(
+            WindowManager.LayoutParams params) {
         if (mFrom == CJConfig.FROM_PLUGIN) {
             super.onWindowAttributesChanged(params);
         }
