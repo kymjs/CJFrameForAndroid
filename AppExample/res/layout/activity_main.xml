@@ -11,4 +11,12 @@
         android:layout_centerVertical="true"
         android:text="启动插件" />
 
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:hint="测试APP与插件通信"
+        android:text="测试数据" />
+
 </RelativeLayout>

@@ -15,14 +15,13 @@
  */
 package org.kymjs.aframe.plugin;
 
-
 /**
- * CJFrame中顶层Application类，未来可能会用来实现插件与插件、插件内组件的通信
+ * 托管所协议类，所有定义为托管所的类都需要实现本接口<br>
  * 
- * <b>创建时间</b> 2014-10-12 <br>
+ * <b>创建时间</b> 2014-10-14 <br>
  * 
  * @author kymjs(kymjs123@gmail.com)
  * @version 1.0
  */
-public class PluginApplication implements I_CJPlugin {
+public interface I_Proxy {
 }

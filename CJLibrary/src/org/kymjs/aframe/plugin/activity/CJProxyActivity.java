@@ -21,6 +21,7 @@ import java.lang.reflect.Method;
 import org.kymjs.aframe.plugin.CJClassLoader;
 import org.kymjs.aframe.plugin.CJConfig;
 import org.kymjs.aframe.plugin.CJTool;
+import org.kymjs.aframe.plugin.I_Proxy;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -43,7 +44,7 @@ import android.view.WindowManager.LayoutParams;
  * @author kymjs(kymjs123@gmail.com)
  * @version 1.0
  */
-public class CJProxy extends Activity {
+public class CJProxyActivity extends Activity implements I_Proxy {
 
     private int mAtyIndex; // 插件Activity在插件Manifest.xml中的序列（可选）
     private String mClass; // 插件Activity的完整类名（可选）

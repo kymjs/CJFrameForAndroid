@@ -15,6 +15,7 @@
  */
 package org.kymjs.aframe.plugin;
 
+
 /**
  * 插件协议类，所有插件的组件都需要实现本接口
  * 

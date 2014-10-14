@@ -48,7 +48,8 @@ public interface I_CJActivity extends I_CJPlugin {
 
     public void onRestart();
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data);
+    public void onActivityResult(int requestCode, int resultCode,
+            Intent data);
 
     public void onSaveInstanceState(Bundle outState);
 
