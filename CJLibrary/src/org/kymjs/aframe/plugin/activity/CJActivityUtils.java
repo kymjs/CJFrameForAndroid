@@ -149,7 +149,7 @@ public class CJActivityUtils {
      * 跳转到插件Activity<br>
      * 默认启动插件Manifest.xml中第一个声明的Activity
      * 
-     * @param cxt
+     * @param aty
      *            上下文
      * @param apkPath
      *            插件所在绝对路径
@@ -162,7 +162,7 @@ public class CJActivityUtils {
     /**
      * 跳转到插件Activity<br>
      * 
-     * @param cxt
+     * @param aty
      *            上下文
      * @param index
      *            插件Manifest.xml中声明的Activity的序列
@@ -181,7 +181,7 @@ public class CJActivityUtils {
      * 跳转到插件Activity<br>
      * <b>注意</b>本方法仅能用在插件做为独立APP运行时使用<br>
      * 
-     * @param cxt
+     * @param aty
      *            上下文
      * @param pluginClass
      *            要启动的Activity的clazz，该clazz必须是CJActivity的子类
