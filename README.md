@@ -5,7 +5,8 @@
 * QQ群：[257053751](http://shang.qq.com/wpa/qunwpa?idkey=00d92c040e81d87ccd21f8d0fffb10640baaa66da45254c3bd329b6ff7d46fef)(开发者群1)，[201055521](http://jq.qq.com/?_wv=1027&k=MBVdpK)(开发者群2)
 * 项目地址：[https://github.com/kymjs/CJFrameForAndroid](https://github.com/kymjs/CJFrameForAndroid)
 * 相关框架: [KJFrameForAndroid](https://github.com/kymjs/KJFrameForAndroid)
-
+*
+* 版本日志debug log： [https://github.com/kymjs/CJFrameForAndroid/blob/master/debug_log.txt](https://github.com/kymjs/CJFrameForAndroid/blob/master/debug_log.txt)
 ---
 # 名词解释
 **APP项目**：指要调用插件apk的那个已经安装到用户手机上的应用。<br>
@@ -28,7 +29,8 @@ CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD�
 # 框架使用
 ●使用 CJFrameForAndroid 插件开发框架需要在你项目的AndroidManifest.xml文件中加入托管所的声明。<br>
 ```xml
-<activity android:name="org.kymjs.aframe.plugin.CJProxyActivity" />
+<activity android:name="org.kymjs.aframe.plugin.CJProxyActivity" />  <!-- 如果使用了插件Activity，需要添加 -->
+<service android:name="org.kymjs.aframe.plugin.service.CJProxyService"/>  <!-- 如果使用了插件Service，需要添加 -->
 ```
 ●让插件应用中的Activity继承CJActivity，并且一切使用this调用的方法都使用that替代。例如this.setContentView();需要改为that.setContentView();<br>
 ●插件中涉及到的Android权限，须在APP项目清单中具有声明。<br>
