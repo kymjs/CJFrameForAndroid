@@ -17,7 +17,7 @@ import android.os.IBinder;
  * @author kymjs(kymjs123@gmail.com)
  * @version 1.0
  */
-public class CJService extends Service implements I_CJService {
+public abstract class CJService extends Service implements I_CJService {
 
     protected String mDexPath = CJConfig.DEF_STR;
     protected int mFrom = CJConfig.FROM_PROXY_APP;

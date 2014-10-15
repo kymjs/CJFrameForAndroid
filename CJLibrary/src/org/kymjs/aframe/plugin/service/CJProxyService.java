@@ -44,16 +44,13 @@ public class CJProxyService extends Service implements I_Proxy {
         try {
             Class<?> serviceClass;
             if (CJConfig.DEF_STR.equals(mDexPath)) {
-                serviceClass = super.getClassLoader().loadClass(
-                        mClass);
+                serviceClass = super.getClassLoader().loadClass(mClass);
             } else {
-                serviceClass = this.getClassLoader()
-                        .loadClass(mClass);
+                serviceClass = this.getClassLoader().loadClass(mClass);
             }
             Constructor<?> serviceConstructor = serviceClass
                     .getConstructor(new Class[] {});
-            instance = serviceConstructor
-                    .newInstance(new Object[] {});
+            instance = serviceConstructor.newInstance(new Object[] {});
         } catch (Exception e) {
         }
         setRemoteService(instance);
@@ -74,12 +71,13 @@ public class CJProxyService extends Service implements I_Proxy {
 
     @Override
     public ClassLoader getClassLoader() {
-        return CJClassLoader.getClassLoader(mDexPath,
-                getApplicationContext(), super.getClassLoader());
+        return CJClassLoader.getClassLoader(mDexPath, getApplicationContext(),
+                super.getClassLoader());
     }
 
     @Override
-    public void onCreate() {} // 不能调用屏蔽super
+    public void onCreate() {
+    } // 不能调用屏蔽super
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
