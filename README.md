@@ -19,6 +19,7 @@
 Fragment的动态加载，因为Activity都可以正常加载，Fragment作为Activity的一部分，自然是没有问题的。<br>
 插件与APP之间的数据通信已经可用，本质上还是Intent的传递。<br>
 动态注册的BroadcastReceiver可正常使用。<br>
+最新添加，绑定式、启动式Service均可正常使用。<br>
 
 # 原理描述
 CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD卡上的apk包中的Activity。通过使用一个托管所，插件Activity全部事务(包括声明周期与交互事件)将交由托管所来处理，间接实现插件的运行。<br>
@@ -38,8 +39,8 @@ CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD�
 ```
 
 # 示例工程运行
-●插件工程：如果要让插件工程单独运行，你只需要将插件工程中/cjlibs目录中的jar包复制到/libs目录下即可。<br>
-			如果作为插件运行，只需要将插件工程插件化编译（此时安装是会报错），然后将/bin目录下的PluginExample.apk复制到手机SD卡根目录即可。<br>
+●插件工程：如果要让插件工程单独运行，你只需要将插件工程中/cjlibs目录中的jar包复制到/libs目录下即可。（demo工程中可能需要修改一行代码，请见[这里](https://github.com/kymjs/CJFrameForAndroid/blob/master/PluginExample/src/org/kymjs/aframe/plugin/MainActivity.java)第41行注释解释）<br>
+			如果作为插件运行，同样需要修改前面所说的第41行待，然后只需要将插件工程插件化编译（此时安装是会报错），最后将/bin目录下的PluginExample.apk复制到手机SD卡根目录即可。<br>
 ●APP工程：运行APP工程只需要将已插件化的apk插件复制到手机SD卡根目录下即可。（一定要是插件化的工程）<br>
 
 ----
@@ -74,6 +75,6 @@ Apache Licence是著名的非盈利开源组织Apache采用的协议。该协议
 blog：http://my.oschina.net/kymjs/blog<br>
 email：kymjs123@gmail.com<br>
 forum/bbs: [http://tieba.baidu.com/f?kw=kym%BD%A9%CA%AC&fr=index](http://tieba.baidu.com/f?kw=kym%BD%A9%CA%AC&fr=index)<br>
-本框架目前仅仅是一个开发阶段，仅仅是实现了插件Activity的运行（原理上来说，动态注册的广播也可以运行），而Service、contentProvider都没办法使用，这些都仍在研究中。<br>
+本框架目前仅仅是一个开发阶段，仅仅是实现了插件Activity的运行（原理上来说，动态注册的广播也可以运行），而contentProvider没办法使用，这些都仍在研究中。<br>
 接下来打算实现的是：Activity launchModer的支持，Service的支持。<br>
 在未来的某一天，也许会将这个CJFrameForAndroid插件框架与KJFrameForAndroid快捷开发框架合并，组成一个更完善应用开发框架，对自己说：加油！<br>

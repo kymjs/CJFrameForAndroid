@@ -24,7 +24,7 @@
         </activity>
         <activity android:name="org.kymjs.aframe.plugin.activity.CJProxyActivity" />
         <service 
-            android:name="org.kymjs.aframe.plugin.service.TestService"/>
+            android:name="org.kymjs.aframe.plugin.service.CJProxyService"/>
     </application>
 
 </manifest>

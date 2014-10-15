@@ -10,4 +10,10 @@
         android:layout_height="wrap_content"
         android:text="startService" />
 
+    <Button
+        android:id="@+id/aty_service_bind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="bindService" />
+
 </LinearLayout>

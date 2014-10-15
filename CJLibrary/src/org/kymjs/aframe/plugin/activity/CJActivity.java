@@ -48,10 +48,6 @@ public abstract class CJActivity extends Activity implements
     protected Activity that; // 替代this指针
     protected String mDexPath = CJConfig.DEF_STR;
     protected int mFrom = CJConfig.FROM_PLUGIN;
-    /**
-     * 用于插件与APP数据传递的信使<br>
-     */
-    private Bundle courier;
 
     public static enum LunchMode {
         STANDARD, SINGLETOP, SINGLETASK, SINGLEINSTANCE
@@ -76,13 +72,6 @@ public abstract class CJActivity extends Activity implements
         mDexPath = dexPath;
     }
 
-    /**
-     * 关于本方法主要目的是用于APP与插件的通信<br>
-     */
-    public Bundle getBundle() {
-        return this.courier;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
@@ -94,7 +83,6 @@ public abstract class CJActivity extends Activity implements
             super.onCreate(savedInstanceState);
             that = this;
         }
-        courier = that.getIntent().getExtras(); // 获取通信信使
     }
 
     @Override
@@ -315,16 +303,18 @@ public abstract class CJActivity extends Activity implements
     public boolean onTouchEvent(MotionEvent event) {
         if (mFrom == CJConfig.FROM_PLUGIN) {
             return super.onTouchEvent(event);
+        } else {
+            return false;
         }
-        return false;
     }
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         if (mFrom == CJConfig.FROM_PLUGIN) {
             return super.onKeyUp(keyCode, event);
+        } else {
+            return false;
         }
-        return false;
     }
 
     @Override

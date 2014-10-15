@@ -14,7 +14,8 @@ import android.widget.TextView;
 
 public class MainActivity extends CJActivity implements
         OnClickListener {
-    private String pluginPath;
+    // 当做为APP单独运行时使用CJConfig.DEF_STR
+    public static String pluginPath = CJConfig.DEF_STR;
     private Button mBtnFrag;
     private Button mBtnService;
     private TextView textview1;
@@ -28,13 +29,17 @@ public class MainActivity extends CJActivity implements
         mBtnService = (Button) that.findViewById(R.id.button2);
         mBtnService.setOnClickListener(this);
         textview1 = (TextView) that.findViewById(R.id.textview1);
-        textview1.setText("测试数据传递:"
-                + getBundle().getCharSequence("courier"));
-        // 当做为插件运行时使用apk地址
+        Bundle data = that.getIntent().getExtras();
+        if (data != null) {
+            textview1.setText("测试数据传递:"
+                    + data.getCharSequence("courier"));
+        } else {
+            textview1.setText("测试数据传递:无数据");
+        }
+
+        // 当做为插件运行时使用apk地址，当作为APP独立运行时只需要注释掉本段话
         pluginPath = Environment.getExternalStorageDirectory()
                 + "/PluginExample.apk";
-        // 当做为APP单独运行时使用CJConfig.DEF_STR
-        // pluginPath = CJConfig.DEF_STR;
     }
 
     @Override
