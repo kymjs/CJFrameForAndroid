@@ -25,21 +25,24 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int aty_service_bind=0x7f080008;
-        public static final int aty_service_btn=0x7f080007;
-        public static final int button1=0x7f080002;
-        public static final int button2=0x7f080003;
-        public static final int button3=0x7f080004;
-        public static final int button4=0x7f080005;
-        public static final int button5=0x7f080006;
+        public static final int aty_service_bind=0x7f08000a;
+        public static final int aty_service_btn=0x7f080009;
+        public static final int button1=0x7f080004;
+        public static final int button2=0x7f080005;
+        public static final int button3=0x7f080006;
+        public static final int button4=0x7f080007;
+        public static final int button5=0x7f080008;
         public static final int content=0x7f080000;
-        public static final int textview1=0x7f080001;
+        public static final int launch_text=0x7f080001;
+        public static final int launcu_btn=0x7f080002;
+        public static final int textview1=0x7f080003;
     }
     public static final class layout {
         public static final int aty_fragment=0x7f030000;
-        public static final int aty_main=0x7f030001;
-        public static final int aty_service=0x7f030002;
-        public static final int frag_test=0x7f030003;
+        public static final int aty_launch_test=0x7f030001;
+        public static final int aty_main=0x7f030002;
+        public static final int aty_service=0x7f030003;
+        public static final int frag_test=0x7f030004;
     }
     public static final class menu {
         public static final int main=0x7f070000;

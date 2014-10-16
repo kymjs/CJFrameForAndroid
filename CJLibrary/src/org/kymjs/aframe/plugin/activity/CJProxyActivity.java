@@ -55,19 +55,16 @@ public class CJProxyActivity extends Activity implements I_Proxy {
     private AssetManager mAssetManager; // 托管插件的assets
 
     protected I_CJActivity mPluginAty; // 插件Activity对象
-    protected CJActivityManager backStack;
+    protected CJBackStack backStack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        backStack = CJActivityManager.create();
+        backStack = CJBackStack.create();
         Intent fromAppIntent = getIntent();
-        mClass = fromAppIntent
-                .getStringExtra(CJConfig.KEY_EXTRA_CLASS);
-        mAtyIndex = fromAppIntent.getIntExtra(CJConfig.KEY_ATY_INDEX,
-                0);
-        mDexPath = fromAppIntent
-                .getStringExtra(CJConfig.KEY_DEX_PATH);
+        mClass = fromAppIntent.getStringExtra(CJConfig.KEY_EXTRA_CLASS);
+        mAtyIndex = fromAppIntent.getIntExtra(CJConfig.KEY_ATY_INDEX, 0);
+        mDexPath = fromAppIntent.getStringExtra(CJConfig.KEY_DEX_PATH);
         initResources();
         if (mClass == null) {
             launchPluginActivity();
@@ -86,10 +83,9 @@ public class CJProxyActivity extends Activity implements I_Proxy {
             defResources();
         } else {
             try {
-                AssetManager assetManager = AssetManager.class
-                        .newInstance();
-                Method addAssetPath = assetManager.getClass()
-                        .getMethod("addAssetPath", String.class);
+                AssetManager assetManager = AssetManager.class.newInstance();
+                Method addAssetPath = assetManager.getClass().getMethod(
+                        "addAssetPath", String.class);
                 addAssetPath.invoke(assetManager, mDexPath);
                 mAssetManager = assetManager;
                 Resources superRes = super.getResources();
@@ -133,21 +129,21 @@ public class CJProxyActivity extends Activity implements I_Proxy {
      *            要启动的Activity完整类名
      */
     protected void launchPluginActivity(final String className) {
+        Class<?> atyClass;
+        Constructor<?> atyConstructor = null;
+        Object instance = null;
         try {
-            Class<?> atyClass;
             if (CJConfig.DEF_STR.equals(mDexPath)) {
-                atyClass = super.getClassLoader()
-                        .loadClass(className);
+                atyClass = super.getClassLoader().loadClass(className);
             } else {
                 atyClass = this.getClassLoader().loadClass(className);
             }
-            Constructor<?> atyConstructor = atyClass
-                    .getConstructor(new Class[] {});
-            Object instance = atyConstructor
-                    .newInstance(new Object[] {});
-            setRemoteActivity(instance);
+            atyConstructor = atyClass.getConstructor(new Class[] {});
+            instance = atyConstructor.newInstance(new Object[] {});
         } catch (Exception e) {
+            e.getStackTrace();
         }
+        setRemoteActivity(instance);
         mPluginAty.setProxy(this, mDexPath);
         Bundle bundle = new Bundle();
         bundle.putInt(CJConfig.FROM, CJConfig.FROM_PROXY_APP);
@@ -155,11 +151,13 @@ public class CJProxyActivity extends Activity implements I_Proxy {
     }
 
     /**
-     * 保留一份插件Activity对象
+     * 设置当前要显示的插件Activity
      */
     protected void setRemoteActivity(Object activity) {
         if (activity instanceof I_CJActivity) {
+            // 根据launchMode去启动一个插件Activity
             mPluginAty = backStack.launch((I_CJActivity) activity);
+            // 如果返回栈中没有，则表示该插件aty没有创建
             if (mPluginAty == null) {
                 mPluginAty = (I_CJActivity) activity;
             }
@@ -171,8 +169,7 @@ public class CJProxyActivity extends Activity implements I_Proxy {
 
     @Override
     public AssetManager getAssets() {
-        return mAssetManager == null ? super.getAssets()
-                : mAssetManager;
+        return mAssetManager == null ? super.getAssets() : mAssetManager;
     }
 
     @Override
@@ -187,13 +184,12 @@ public class CJProxyActivity extends Activity implements I_Proxy {
 
     @Override
     public ClassLoader getClassLoader() {
-        return CJClassLoader.getClassLoader(mDexPath,
-                getApplicationContext(), super.getClassLoader());
+        return CJClassLoader.getClassLoader(mDexPath, getApplicationContext(),
+                super.getClassLoader());
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode,
-            Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         mPluginAty.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
     }
