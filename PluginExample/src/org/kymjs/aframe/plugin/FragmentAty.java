@@ -20,8 +20,8 @@ public class FragmentAty extends CJActivity {
     protected void changeFragment(int resView, Fragment targetFragment) {
         FragmentTransaction transaction = that.getFragmentManager()
                 .beginTransaction();
-        transaction.replace(resView, targetFragment, targetFragment.getClass()
-                .getName());
+        transaction.replace(resView, targetFragment, targetFragment
+                .getClass().getName());
         transaction.commit();
     }
 }

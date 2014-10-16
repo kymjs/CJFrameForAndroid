@@ -45,22 +45,23 @@ public abstract class CJActivity extends Activity implements
     /**
      * that指针指向的是当前插件的Context（由于是插件化开发，this指针绝对不能使用）
      */
-    protected Activity that; // 替代this指针
+    public Activity that; // 替代this指针
     protected String mDexPath = CJConfig.DEF_STR;
     protected int mFrom = CJConfig.FROM_PLUGIN;
 
-    public static enum LunchMode {
+    public static enum LaunchMode {
         STANDARD, SINGLETOP, SINGLETASK, SINGLEINSTANCE
     }
 
-    private LunchMode lunchMode = LunchMode.SINGLETOP;
+    private LaunchMode launchMode = LaunchMode.STANDARD;
 
-    public void setLunchMode(LunchMode lunchMode) {
-        this.lunchMode = lunchMode;
+    public void setLunchMode(LaunchMode launchMode) {
+        this.launchMode = launchMode;
     }
 
-    public LunchMode getLunchMode() {
-        return lunchMode;
+    @Override
+    public LaunchMode getLaunchMode() {
+        return launchMode;
     }
 
     /**

@@ -6,7 +6,6 @@ import org.kymjs.aframe.plugin.example.R;
 import org.kymjs.aframe.plugin.service.ServiceActivity;
 
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -18,6 +17,7 @@ public class MainActivity extends CJActivity implements
     public static String pluginPath = CJConfig.DEF_STR;
     private Button mBtnFrag;
     private Button mBtnService;
+    private Button mBtnLaunchMode;
     private TextView textview1;
 
     @Override
@@ -28,6 +28,8 @@ public class MainActivity extends CJActivity implements
         mBtnFrag.setOnClickListener(this);
         mBtnService = (Button) that.findViewById(R.id.button2);
         mBtnService.setOnClickListener(this);
+        mBtnLaunchMode = (Button) that.findViewById(R.id.button5);
+        mBtnLaunchMode.setOnClickListener(this);
         textview1 = (TextView) that.findViewById(R.id.textview1);
         Bundle data = that.getIntent().getExtras();
         if (data != null) {
@@ -38,8 +40,8 @@ public class MainActivity extends CJActivity implements
         }
 
         // 当做为插件运行时使用apk地址，当作为APP独立运行时只需要注释掉本段话
-        pluginPath = Environment.getExternalStorageDirectory()
-                + "/PluginExample.apk";
+        // pluginPath = Environment.getExternalStorageDirectory()
+        // + "/PluginExample.apk";
     }
 
     @Override
@@ -52,6 +54,10 @@ public class MainActivity extends CJActivity implements
         case R.id.button2:
             CJActivityUtils.launchPlugin(that, pluginPath,
                     ServiceActivity.class);
+            break;
+        case R.id.button5:
+            CJActivityUtils.launchPlugin(that, pluginPath,
+                    TestLaunchMode.class);
             break;
         }
     }

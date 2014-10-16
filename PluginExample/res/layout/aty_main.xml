@@ -34,4 +34,10 @@
         android:layout_height="wrap_content"
         android:text="测试清单文件广播" />
 
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activity启动模式" />
+
 </LinearLayout>

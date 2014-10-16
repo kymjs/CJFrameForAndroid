@@ -16,6 +16,7 @@
 package org.kymjs.aframe.plugin.activity;
 
 import org.kymjs.aframe.plugin.I_CJPlugin;
+import org.kymjs.aframe.plugin.activity.CJActivity.LaunchMode;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -66,6 +67,11 @@ public interface I_CJActivity extends I_CJPlugin {
     public void onWindowFocusChanged(boolean hasFocus);
 
     public void onBackPressed();
+
+    /**
+     * 获取当前Activity的启动模式
+     */
+    public LaunchMode getLaunchMode();
 
     /**
      * 设置托管Activity，并将that指针指向那个托管的Activity

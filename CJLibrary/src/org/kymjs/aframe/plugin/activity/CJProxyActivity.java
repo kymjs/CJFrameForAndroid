@@ -55,10 +55,12 @@ public class CJProxyActivity extends Activity implements I_Proxy {
     private AssetManager mAssetManager; // 托管插件的assets
 
     protected I_CJActivity mPluginAty; // 插件Activity对象
+    protected CJActivityManager backStack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        backStack = CJActivityManager.create();
         Intent fromAppIntent = getIntent();
         mClass = fromAppIntent
                 .getStringExtra(CJConfig.KEY_EXTRA_CLASS);
@@ -144,12 +146,12 @@ public class CJProxyActivity extends Activity implements I_Proxy {
             Object instance = atyConstructor
                     .newInstance(new Object[] {});
             setRemoteActivity(instance);
-            mPluginAty.setProxy(this, mDexPath);
-            Bundle bundle = new Bundle();
-            bundle.putInt(CJConfig.FROM, CJConfig.FROM_PROXY_APP);
-            mPluginAty.onCreate(bundle);
         } catch (Exception e) {
         }
+        mPluginAty.setProxy(this, mDexPath);
+        Bundle bundle = new Bundle();
+        bundle.putInt(CJConfig.FROM, CJConfig.FROM_PROXY_APP);
+        mPluginAty.onCreate(bundle);
     }
 
     /**
@@ -157,7 +159,10 @@ public class CJProxyActivity extends Activity implements I_Proxy {
      */
     protected void setRemoteActivity(Object activity) {
         if (activity instanceof I_CJActivity) {
-            mPluginAty = (I_CJActivity) activity;
+            mPluginAty = backStack.launch((I_CJActivity) activity);
+            if (mPluginAty == null) {
+                mPluginAty = (I_CJActivity) activity;
+            }
         } else {
             throw new ClassCastException(
                     "plugin activity must implements I_CJActivity");
@@ -225,6 +230,7 @@ public class CJProxyActivity extends Activity implements I_Proxy {
 
     @Override
     protected void onDestroy() {
+        backStack.finish(mPluginAty);
         mPluginAty.onDestroy();
         super.onDestroy();
     }
