@@ -4,7 +4,7 @@
 ## CJFrameForAndroid 相关链接
 * QQ群：[257053751](http://shang.qq.com/wpa/qunwpa?idkey=00d92c040e81d87ccd21f8d0fffb10640baaa66da45254c3bd329b6ff7d46fef)(开发者群1)，[201055521](http://jq.qq.com/?_wv=1027&k=MBVdpK)(开发者群2)
 * 项目地址：[https://github.com/kymjs/CJFrameForAndroid](https://github.com/kymjs/CJFrameForAndroid)
-* 相关框架: [KJFrameForAndroid](https://github.com/kymjs/KJFrameForAndroid)
+* 相关框架: [KJFrameForAndroid](https://github.com/kymjs/KJFrameForAndroid)<br>
 *
 * 版本日志debug log： [https://github.com/kymjs/CJFrameForAndroid/blob/master/debug_log.txt](https://github.com/kymjs/CJFrameForAndroid/blob/master/debug_log.txt)
 
@@ -17,11 +17,12 @@
 **托管所**：指插件中的一个委派/代理Activity，通过这个Activity去处理插件中Activity的全部事务，从而表现为就像插件中的Activity在运行一样。<br>
 
 # 功能支持
-目前Activity的动态加载，包括生命周期和交互事件均可正常使用（launchMode还没有办法定义）。<br>
+目前Activity的动态加载，包括生命周期和交互事件均可正常使用<br>
 Fragment的动态加载，因为Activity都可以正常加载，Fragment作为Activity的一部分，自然是没有问题的。<br>
 插件与APP之间的数据通信已经可用，本质上还是Intent的传递。<br>
 动态注册的BroadcastReceiver可正常使用。<br>
-最新添加，绑定式、启动式Service均可正常使用。<br>
+添加，绑定式、启动式Service均可正常使用。<br>
+已成功模拟出launchMode的效果。<br>
 
 # 原理描述
 CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD卡上的apk包中的Activity。通过使用一个托管所，插件Activity全部事务(包括声明周期与交互事件)将交由托管所来处理，间接实现插件的运行。<br>
