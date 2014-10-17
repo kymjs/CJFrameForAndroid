@@ -30,8 +30,7 @@ public class CJBackStack {
     // 用链表来模拟一个Activity返回栈
     private static List<I_CJActivity> atyStack;
 
-    private CJBackStack() {
-    }
+    private CJBackStack() {}
 
     private static class StackHolder {
         private static final CJBackStack instance = new CJBackStack();
@@ -70,7 +69,8 @@ public class CJBackStack {
         atyStack.add(pluginAty);
         I_CJActivity inStackPluginAty = null;
         for (int i = atyStack.size() - 2; i >= 0; i--) {
-            if (atyStack.get(i).getClass().equals(pluginAty.getClass())) {
+            if (atyStack.get(i).getClass()
+                    .equals(pluginAty.getClass())) {
                 switch (pluginAty.getLaunchMode()) {
                 case STANDARD:// 什么也不做
                     break;

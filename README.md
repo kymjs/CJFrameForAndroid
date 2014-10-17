@@ -22,7 +22,7 @@ Fragment的动态加载，因为Activity都可以正常加载，Fragment作为Ac
 插件与APP之间的数据通信已经可用，本质上还是Intent的传递。<br>
 动态注册的BroadcastReceiver可正常使用。<br>
 添加，绑定式、启动式Service均可正常使用。<br>
-已成功模拟出launchMode的效果。<br>
+已成功模拟出launchMode的效果。(launchModer实际上是一个虚拟的，生命周期的调用还是一样的，仅仅模拟出了系统的BackStack)<br>
 
 # 原理描述
 CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD卡上的apk包中的Activity。通过使用一个托管所，插件Activity全部事务(包括声明周期与交互事件)将交由托管所来处理，间接实现插件的运行。<br>
@@ -50,10 +50,9 @@ CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD�
 ----
 
 # 注意事项
-●目前仅支持Activity和Fragment，其他特殊组件暂未测试。<br>
 ●APP项目和插件项目中，都需要使用到CJFrameForAndroid的jar包。<br>
 ●在项目中必须加入托管所声明。<br>
-●在开发插件的时候，必须继承CJActivity;<br>
+●在开发插件的时候，必须继承CJ框架相应基类;<br>
 ●在插件的Activity中，一切使用this的部分必须使用that来替代;<br>
 ●在插件Activity跳转时，推荐使用CJActivityUtils类来辅助跳转；<br>
 ●在插件和APP两个工程中不能引用相同的jar包；<br>
@@ -79,6 +78,5 @@ Apache Licence是著名的非盈利开源组织Apache采用的协议。该协议
 blog：http://my.oschina.net/kymjs/blog<br>
 email：kymjs123@gmail.com<br>
 forum/bbs: [http://tieba.baidu.com/f?kw=kym%BD%A9%CA%AC&fr=index](http://tieba.baidu.com/f?kw=kym%BD%A9%CA%AC&fr=index)<br>
-本框架目前仅仅是一个开发阶段，仅仅是实现了插件Activity的运行（原理上来说，动态注册的广播也可以运行），而contentProvider没办法使用，这些都仍在研究中。<br>
-接下来打算实现的是：Activity launchModer的支持，Service的支持。<br>
+本框架目前仅仅是一个开发阶段，而contentProvider、全局Broadcast等都还没办法使用，这些都仍在研究中。<br>
 在未来的某一天，也许会将这个CJFrameForAndroid插件框架与KJFrameForAndroid快捷开发框架合并，组成一个更完善应用开发框架，对自己说：加油！<br>
