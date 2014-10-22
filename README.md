@@ -7,11 +7,8 @@
 ## CJFrameForAndroid 相关链接
 * QQ群：[257053751](http://shang.qq.com/wpa/qunwpa?idkey=00d92c040e81d87ccd21f8d0fffb10640baaa66da45254c3bd329b6ff7d46fef)(开发者群1)，[201055521](http://jq.qq.com/?_wv=1027&k=MBVdpK)(开发者群2)
 * 项目地址：[https://github.com/kymjs/CJFrameForAndroid](https://github.com/kymjs/CJFrameForAndroid)
-* 相关框架: [KJFrameForAndroid](https://github.com/kymjs/KJFrameForAndroid/tree/Plugin)<br>
-*
 * 版本日志debug log： [https://github.com/kymjs/CJFrameForAndroid/blob/master/debug_log.txt](https://github.com/kymjs/CJFrameForAndroid/blob/master/debug_log.txt)
 
----
 # 名词解释
 **APP项目**：指要调用插件apk的那个已经安装到用户手机上的应用。<br>
 **插件项目**：指没有被安装且希望借助已经安装到手机上的项目运行的apk。<br>
