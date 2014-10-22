@@ -1,10 +1,13 @@
 ## ![logo](https://github.com/kymjs/KJFrameForAndroid/blob/master/KJFrameExample/logo.jpg) CJFrameForAndroid简介
 **CJFrameForAndroid** 是一个实现android插件化开发的框架。使用CJFrameForAndroid，apk动态加载不再是难题，更重要的是可以轻松实现插件与APP项目之间的解耦。<br>
 
+---
+**注：** CJFrameForAndroid现已并入Android应用开发框架[KJFrameForAndroid](https://github.com/kymjs/KJFrameForAndroid/tree/Plugin)中，作为其插件化模块存在，此处更新将延后。
+
 ## CJFrameForAndroid 相关链接
 * QQ群：[257053751](http://shang.qq.com/wpa/qunwpa?idkey=00d92c040e81d87ccd21f8d0fffb10640baaa66da45254c3bd329b6ff7d46fef)(开发者群1)，[201055521](http://jq.qq.com/?_wv=1027&k=MBVdpK)(开发者群2)
 * 项目地址：[https://github.com/kymjs/CJFrameForAndroid](https://github.com/kymjs/CJFrameForAndroid)
-* 相关框架: [KJFrameForAndroid](https://github.com/kymjs/KJFrameForAndroid)<br>
+* 相关框架: [KJFrameForAndroid](https://github.com/kymjs/KJFrameForAndroid/tree/Plugin)<br>
 *
 * 版本日志debug log： [https://github.com/kymjs/CJFrameForAndroid/blob/master/debug_log.txt](https://github.com/kymjs/CJFrameForAndroid/blob/master/debug_log.txt)
 
@@ -78,5 +81,3 @@ Apache Licence是著名的非盈利开源组织Apache采用的协议。该协议
 blog：http://my.oschina.net/kymjs/blog<br>
 email：kymjs123@gmail.com<br>
 forum/bbs: [http://tieba.baidu.com/f?kw=kym%BD%A9%CA%AC&fr=index](http://tieba.baidu.com/f?kw=kym%BD%A9%CA%AC&fr=index)<br>
-本框架目前仅仅是一个开发阶段，而contentProvider、全局Broadcast等都还没办法使用，这些都仍在研究中。<br>
-在未来的某一天，也许会将这个CJFrameForAndroid插件框架与KJFrameForAndroid快捷开发框架合并，组成一个更完善应用开发框架，对自己说：加油！<br>
