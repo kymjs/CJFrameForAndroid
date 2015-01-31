@@ -31,20 +31,20 @@ CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD�
 下载[KJFrameForAndroid](https://github.com/kymjs/KJFrameForAndroid)项目,并运行demo；下载[插件化演示Demo](https://github.com/kymjs/CJFrameForAndroid/tree/master/binrary/DemoResources)，点击KJFrameForAndroid的Demo中Plugin模块根据提示操作
 
 ----
-# 名词解释
-**APP项目**：指要调用插件apk的那个已经安装到用户手机上的应用。<br>
-**插件项目**：指没有被安装且希望借助已经安装到手机上的项目运行的apk。<br>
-**插件化**：Activity继承自CJActivity，且与APP项目jar包冲突已经解决的插件项目称为已经被插件化。<br>
-**Activity事务**：在CJFrameForAndroid中，一个Activity的生命周期以及交互事件统称为Activity的事务。<br>
-**托管所**：指插件中的一个委派/代理Activity，通过这个Activity去处理插件中Activity的全部事务，从而表现为就像插件中的Activity在运行一样。<br>
-
-# 注意事项
+## 注意事项
 ●APP项目和插件项目中，都需要使用到CJFrameForAndroid的jar包。<br>
 ●在项目中必须加入托管所声明。<br>
 ●在开发插件的时候，必须继承CJ框架相应基类;<br>
 ●在插件的Activity中，一切使用this的部分必须使用that来替代;<br>
 ●在插件Activity跳转时，推荐使用CJActivityUtils类来辅助跳转；<br>
 ●在插件和APP两个工程中不能引用相同的jar包；<br>
+
+## 名词解释
+**APP项目**：指要调用插件apk的那个已经安装到用户手机上的应用。<br>
+**插件项目**：指没有被安装且希望借助已经安装到手机上的项目运行的apk。<br>
+**插件化**：Activity继承自CJActivity，且与APP项目jar包冲突已经解决的插件项目称为已经被插件化。<br>
+**Activity事务**：在CJFrameForAndroid中，一个Activity的生命周期以及交互事件统称为Activity的事务。<br>
+**托管所**：指插件中的一个委派/代理Activity，通过这个Activity去处理插件中Activity的全部事务，从而表现为就像插件中的Activity在运行一样。<br>
 
 ## 许可
   Copyright (c) 2014, Zhang Tao.
