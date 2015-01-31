@@ -1,6 +1,5 @@
-## ![logo](https://github.com/kymjs/KJFrameForAndroid/blob/master/KJFrameExample/logo.jpg) CJFrameForAndroid简介
+## ![logo](https://github.com/kymjs/KJFrameForAndroid/blob/master/KJLibraryExample/res/drawable-hdpi/ic_launcher.png) CJFrameForAndroid简介
 **CJFrameForAndroid** 是一个实现android插件化开发的框架。使用CJFrameForAndroid，apk动态加载不再是难题，更重要的是可以轻松实现插件与APP项目之间的解耦。<br>
-
 ---
 **注：** CJFrameForAndroid现已并入Android应用开发框架[KJFrameForAndroid](https://github.com/kymjs/KJFrameForAndroid/blob/master/PluginLibraryExplain.md)中，作为其插件化模块存在，此处更新将延后。
 
@@ -9,24 +8,9 @@
 * 项目地址：[https://github.com/kymjs/CJFrameForAndroid](https://github.com/kymjs/CJFrameForAndroid)
 * 版本日志debug log： [https://github.com/kymjs/CJFrameForAndroid/blob/master/debug_log.txt](https://github.com/kymjs/CJFrameForAndroid/blob/master/debug_log.txt)
 
-# 名词解释
-**APP项目**：指要调用插件apk的那个已经安装到用户手机上的应用。<br>
-**插件项目**：指没有被安装且希望借助已经安装到手机上的项目运行的apk。<br>
-**插件化**：Activity继承自CJActivity，且与APP项目jar包冲突已经解决的插件项目称为已经被插件化。<br>
-**Activity事务**：在CJFrameForAndroid中，一个Activity的生命周期以及交互事件统称为Activity的事务。<br>
-**托管所**：指插件中的一个委派/代理Activity，通过这个Activity去处理插件中Activity的全部事务，从而表现为就像插件中的Activity在运行一样。<br>
-
-# 功能支持
-目前Activity的动态加载，包括生命周期和交互事件均可正常使用<br>
-Fragment的动态加载，因为Activity都可以正常加载，Fragment作为Activity的一部分，自然是没有问题的。<br>
-插件与APP之间的数据通信已经可用，本质上还是Intent的传递。<br>
-动态注册的BroadcastReceiver可正常使用。<br>
-添加，绑定式、启动式Service均可正常使用。<br>
-已成功模拟出launchMode的效果。(launchModer实际上是一个虚拟的，生命周期的调用还是一样的，仅仅模拟出了系统的BackStack)<br>
-
 # 原理描述
 CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD卡上的apk包中的Activity。通过使用一个托管所，插件Activity全部事务(包括声明周期与交互事件)将交由托管所来处理，间接实现插件的运行。<br>
-一句话描述：CJFrameForAndroid中的托管所，复制了插件中的Activity，来替代插件中的Activity与用户交互。<br>
+一句话概括：CJFrameForAndroid中的托管所，复制了插件中的Activity，来替代插件中的Activity与用户交互。<br>
 
 # 框架使用
 ●使用 CJFrameForAndroid 插件开发框架需要在你项目的AndroidManifest.xml文件中加入托管所的声明。<br>
@@ -43,11 +27,15 @@ CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD�
 ```
 
 # 示例工程运行
-●插件工程：如果要让插件工程单独运行，你只需要将插件工程中/cjlibs目录中的jar包复制到/libs目录下即可。（demo工程中可能需要修改一行代码，请见[这里](https://github.com/kymjs/CJFrameForAndroid/blob/master/PluginExample/src/org/kymjs/aframe/plugin/MainActivity.java)第41行注释解释）<br>
-			如果作为插件运行，同样需要修改前面所说的第41行待，然后只需要将插件工程插件化编译（此时安装是会报错），最后将/bin目录下的PluginExample.apk复制到手机SD卡根目录即可。<br>
-●APP工程：运行APP工程只需要将已插件化的apk插件复制到手机SD卡根目录下即可。（一定要是插件化的工程）<br>
-
+下载[KJFrameForAndroid](https://github.com/kymjs/KJFrameForAndroid)项目,并运行demo；下载[插件化演示Demo]()，点击KJFrameForAndroid的Demo中Plugin模块根据提示操作
 ----
+
+# 名词解释
+**APP项目**：指要调用插件apk的那个已经安装到用户手机上的应用。<br>
+**插件项目**：指没有被安装且希望借助已经安装到手机上的项目运行的apk。<br>
+**插件化**：Activity继承自CJActivity，且与APP项目jar包冲突已经解决的插件项目称为已经被插件化。<br>
+**Activity事务**：在CJFrameForAndroid中，一个Activity的生命周期以及交互事件统称为Activity的事务。<br>
+**托管所**：指插件中的一个委派/代理Activity，通过这个Activity去处理插件中Activity的全部事务，从而表现为就像插件中的Activity在运行一样。<br>
 
 # 注意事项
 ●APP项目和插件项目中，都需要使用到CJFrameForAndroid的jar包。<br>
@@ -58,9 +46,7 @@ CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD�
 ●在插件和APP两个工程中不能引用相同的jar包；<br>
 
 ## 许可
-**本项目采用 Apache Licence 2.0 授权协议:<br>
-Apache Licence是著名的非盈利开源组织Apache采用的协议。该协议和BSD类似，同样鼓励代码共享和尊重原作者的著作权，同样允许代码修改，再发布（作为开源或商业软件）[更多...](http://www.oschina.net/question/12_2828)<br>
-  Copyright (c) 2014, KJFrameForAndroid Open Source Project, Zhang Tao.
+  Copyright (c) 2014, Zhang Tao.
  
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -73,8 +59,8 @@ Apache Licence是著名的非盈利开源组织Apache采用的协议。该协议
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
-
-## 关于作者kymjs
-blog：http://my.oschina.net/kymjs/blog<br>
-email：kymjs123@gmail.com<br>
-forum/bbs: [http://tieba.baidu.com/f?kw=kym%BD%A9%CA%AC&fr=index](http://tieba.baidu.com/f?kw=kym%BD%A9%CA%AC&fr=index)<br>
+  
+## 帮助我
+我是张涛，中国深圳，Android高级工程师<br>
+如果CJFrameForAndroid项目帮到了你，可否在你有能力的基础捐助本项目的开发与维护，以让我更有信心和能力回馈网友。<br>
+[点这里参与我的众筹](https://shenghuo.alipay.com/send/payment/fill.htm) 我的支付宝账号[kymjs@foxmail.com](https://shenghuo.alipay.com/send/payment/fill.htm)<br>
