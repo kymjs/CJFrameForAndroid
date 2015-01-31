@@ -1,15 +1,16 @@
 ## ![logo](https://github.com/kymjs/KJFrameForAndroid/blob/master/KJLibraryExample/res/drawable-hdpi/ic_launcher.png) CJFrameForAndroid简介
 **CJFrameForAndroid** 是一个实现android插件化开发的框架。使用CJFrameForAndroid，apk动态加载不再是难题，更重要的是可以轻松实现插件与APP项目之间的解耦。<br>
+
 ---
 **注：** CJFrameForAndroid现已并入Android应用开发框架[KJFrameForAndroid](https://github.com/kymjs/KJFrameForAndroid/blob/master/PluginLibraryExplain.md)中，作为其插件化模块存在，此处更新将延后。
 
 ## CJFrameForAndroid 相关链接
-* QQ群：[257053751](http://shang.qq.com/wpa/qunwpa?idkey=00d92c040e81d87ccd21f8d0fffb10640baaa66da45254c3bd329b6ff7d46fef)(开发者群1)，[201055521](http://jq.qq.com/?_wv=1027&k=MBVdpK)(开发者群2)
+* blog：http://my.oschina.net/kymjs/blog<br>
+* QQ群：[257053751](http://jq.qq.com/?_wv=1027&k=WoM2Aa)(开发者群1)，[201055521](http://jq.qq.com/?_wv=1027&k=MBVdpK)(开发者群2)
 * 项目地址：[https://github.com/kymjs/CJFrameForAndroid](https://github.com/kymjs/CJFrameForAndroid)
-* 版本日志debug log： [https://github.com/kymjs/CJFrameForAndroid/blob/master/debug_log.txt](https://github.com/kymjs/CJFrameForAndroid/blob/master/debug_log.txt)
 
 # 原理描述
-CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD卡上的apk包中的Activity。通过使用一个托管所，插件Activity全部事务(包括声明周期与交互事件)将交由托管所来处理，间接实现插件的运行。<br>
+CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD卡上的apk包中的Activity。通过使用一个托管所，插件Activity全部事务(包括声明周期与交互事件)将交由托管所来处理，间接实现插件的运行。更多介绍:[CJFrameForAndroid原理介绍](http://my.oschina.net/kymjs/blog/331997)<br>
 一句话概括：CJFrameForAndroid中的托管所，复制了插件中的Activity，来替代插件中的Activity与用户交互。<br>
 
 # 框架使用
@@ -27,9 +28,9 @@ CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD�
 ```
 
 # 示例工程运行
-下载[KJFrameForAndroid](https://github.com/kymjs/KJFrameForAndroid)项目,并运行demo；下载[插件化演示Demo]()，点击KJFrameForAndroid的Demo中Plugin模块根据提示操作
-----
+下载[KJFrameForAndroid](https://github.com/kymjs/KJFrameForAndroid)项目,并运行demo；下载[插件化演示Demo](https://github.com/kymjs/CJFrameForAndroid/tree/master/binrary/DemoResources)，点击KJFrameForAndroid的Demo中Plugin模块根据提示操作
 
+----
 # 名词解释
 **APP项目**：指要调用插件apk的那个已经安装到用户手机上的应用。<br>
 **插件项目**：指没有被安装且希望借助已经安装到手机上的项目运行的apk。<br>
