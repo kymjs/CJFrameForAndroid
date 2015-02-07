@@ -2,7 +2,7 @@
 **CJFrameForAndroid** 是一个实现android插件化开发的框架。使用CJFrameForAndroid，apk动态加载不再是难题，更重要的是可以轻松实现插件与APP项目之间的解耦。<br>
 
 ---
-**注：** CJFrameForAndroid现已并入Android应用开发框架[KJFrameForAndroid](https://github.com/kymjs/KJFrameForAndroid/blob/master/PluginLibraryExplain.md)中，作为其插件化模块存在，此处更新将延后。
+**注：** CJFrameForAndroid现已并入Android应用开发框架[KJFrameForAndroid](https://github.com/kymjs/KJFrameForAndroid)中，作为其插件化模块存在，此处更新将延后。
 
 ## CJFrameForAndroid 相关链接
 * blog：http://my.oschina.net/kymjs/blog<br>
