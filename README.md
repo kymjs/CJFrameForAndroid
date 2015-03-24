@@ -5,12 +5,12 @@
 **注：** CJFrameForAndroid现已并入Android应用开发框架[KJFrameForAndroid](https://github.com/kymjs/KJFrameForAndroid)中，作为其插件化模块存在，此处更新将延后。
 
 ## CJFrameForAndroid 相关链接
-* blog：http://my.oschina.net/kymjs/blog<br>
+* blog：http://blog.kymjs.com<br>
 * QQ群：[257053751](http://jq.qq.com/?_wv=1027&k=WoM2Aa)(开发者群1)，[201055521](http://jq.qq.com/?_wv=1027&k=MBVdpK)(开发者群2)
-* 项目地址：[https://github.com/kymjs/CJFrameForAndroid](https://github.com/kymjs/CJFrameForAndroid)
+* 详细使用介绍：请查看[开源实验室](http://www.kymjs.com)上面的讲解
 
 # 原理描述
-CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD卡上的apk包中的Activity。通过使用一个托管所，插件Activity全部事务(包括声明周期与交互事件)将交由托管所来处理，间接实现插件的运行。更多介绍:[CJFrameForAndroid原理介绍](http://my.oschina.net/kymjs/blog/331997)<br>
+CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD卡上的apk包中的Activity。通过使用一个托管所，插件Activity全部事务(包括声明周期与交互事件)将交由托管所来处理，间接实现插件的运行。更多介绍:[CJFrameForAndroid原理介绍](http://blog.kymjs.com/cjframeforandroid/2014/10/15/01/)<br>
 一句话概括：CJFrameForAndroid中的托管所，复制了插件中的Activity，来替代插件中的Activity与用户交互。<br>
 
 # 框架使用
@@ -60,8 +60,3 @@ CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD�
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
-  
-## 帮助我
-我是张涛，中国深圳，Android高级工程师<br>
-如果CJFrameForAndroid项目帮到了你，可否在你有能力的基础捐助本项目的开发与维护，以让我更有信心和能力回馈网友。<br>
-[点这里参与我的众筹](https://shenghuo.alipay.com/send/payment/fill.htm) 我的支付宝账号[kymjs@foxmail.com](https://shenghuo.alipay.com/send/payment/fill.htm)<br>
