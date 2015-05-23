@@ -13,14 +13,16 @@ CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD�
 一句话概括：CJFrameForAndroid中的托管所，复制了插件中的Activity，来替代插件中的Activity与用户交互。<br>
 
 # 框架使用
-你只需要在你项目想要启动插件的任意位置(UI线程中)，例如Button的Onclick事件中加入如下代码即可。
+1. 需要注意的是，插件中所涉及的权限，都需要在宿主中加以声明。宿主Manifest文件写法请参考：[AndroidManifest.xml](https://github.com/kymjs/CJFrameForAndroid/blob/master/AndroidManifest.xml)  
+2. 你只需要在你项目想要启动插件的任意位置(UI线程中)，例如Button的Onclick事件中加入如下代码即可。
 ```java
 /**
  * @param context 上下文对象
  * @param path  插件所在的绝对路径
  */
-LPluginOpener.startPlugin(context,path);
+CJActivityUtils.startPlugin(context,path);
 ```
+
 
 ## 许可
   Copyright (c) 2014, Zhang Tao.
