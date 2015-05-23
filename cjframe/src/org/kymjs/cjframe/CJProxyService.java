@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.kymjs.cjframe.service;
+package org.kymjs.cjframe;
 
 import org.kymjs.cjframe.bean.ServicePlugin;
 import org.kymjs.cjframe.manager.ApkManager;

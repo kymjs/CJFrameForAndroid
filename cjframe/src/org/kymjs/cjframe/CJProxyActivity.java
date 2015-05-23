@@ -11,7 +11,6 @@ import org.kymjs.cjframe.control.PluginActivityControl;
 import org.kymjs.cjframe.manager.ApkManager;
 import org.kymjs.cjframe.manager.LCallbackManager;
 import org.kymjs.cjframe.manager.LPluginBugManager;
-import org.kymjs.cjframe.service.CJProxyService;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -35,7 +34,6 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
-
 
 /**
  * Created by lody on 2015/3/27.
