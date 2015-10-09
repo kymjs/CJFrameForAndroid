@@ -6,10 +6,9 @@
 ## CJFrameForAndroid 相关链接
 * blog：http://blog.kymjs.com<br>
 * QQ群：[257053751](http://jq.qq.com/?_wv=1027&k=WoM2Aa)(开发者群1)，[201055521](http://jq.qq.com/?_wv=1027&k=MBVdpK)(开发者群2)
-* DLA：https://github.com/FinalLody/Direct-Load-apk
 
 # 原理描述
-CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD卡上的apk包中的Activity。通过使用一个托管所，插件Activity全部事务(包括声明周期与交互事件)将交由托管所来处理，间接实现插件的运行。更多介绍:[CJFrameForAndroid原理介绍](http://blog.kymjs.com/cjframeforandroid/2014/10/15/01/)<br>
+CJFrameForAndroid的实现原理是通过类加载器，动态加载存在于SD卡上的apk包中的Activity。通过使用一个托管所，插件Activity全部事务(包括声明周期与交互事件)将交由托管所来处理，间接实现插件的运行。更多介绍:[CJFrameForAndroid原理介绍](http://blog.kymjs.com/code/2014/10/15/01/)<br>
 一句话概括：CJFrameForAndroid中的托管所，复制了插件中的Activity，来替代插件中的Activity与用户交互。<br>
 
 # 框架使用
