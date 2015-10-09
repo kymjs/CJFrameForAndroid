@@ -1,4 +1,5 @@
-## ![logo](https://github.com/kymjs/KJFrameForAndroid/blob/master/KJLibraryExample/res/drawable-hdpi/ic_launcher.png) CJFrameForAndroid简介
+#[![OSL](http://www.kymjs.com/image/logo_s.png)](http://www.kymjs.com/works/)    
+CJFrameForAndroid简介
 **CJFrameForAndroid** 是一个实现android插件化开发的框架。使用CJFrameForAndroid，apk动态加载不再是难题，更重要的是可以轻松实现插件与APP项目之间的解耦。<br>
 
 ---
