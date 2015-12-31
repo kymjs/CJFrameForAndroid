@@ -4,6 +4,10 @@ CJFrameForAndroid简介
 
 ---
 
+CJFrame不再更新，尽管我不喜欢360，但仍推荐大家使用360的黑科技[DroidPlugin](https://github.com/Qihoo360/DroidPlugin)  四大组件均可支持插件化。
+
+---
+
 ## CJFrameForAndroid 相关链接
 * blog：http://blog.kymjs.com<br>
 * QQ群：[257053751](http://jq.qq.com/?_wv=1027&k=WoM2Aa)(开发者群1)，[201055521](http://jq.qq.com/?_wv=1027&k=MBVdpK)(开发者群2)

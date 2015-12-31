@@ -21,9 +21,8 @@ import org.kymjs.cjframe.manager.ApkManager;
 import android.app.Activity;
 import android.content.res.Resources;
 
-
 /**
- * Created by lody on 2015/3/27.
+ * 插件的一个Activity的bean，包含了这个Activity所需要的全部信息
  */
 public class ActivityPlugin {
     /**
@@ -43,7 +42,7 @@ public class ActivityPlugin {
      */
     private Activity CurrentPluginActivity;
     /**
-     * 插件的第一个Activity
+     * 插件的第一个Activity名
      */
     private String topActivityName = null;
     /**
@@ -160,7 +159,7 @@ public class ActivityPlugin {
         this.proxyParent = proxyParent;
         from = ApkManager.get(apkPath);
         from.bindDexLoader(proxyParent);
-        // NOTE:此时from这个对象可能没有初始化，也可能已经初始化了，为了保证效率，需要判断。
+        // NOTE:此时from这个对象可能没有初始化，也可能已经初始化了。
         // 可以通过from.canUse()来判断。
     }
 }

@@ -200,7 +200,6 @@ public class CJProxyActivity extends Activity implements I_LoadPlugin {
         }
 
         fillPlugin(remotePlugin);
-        // remotePlugin.from().debug();
 
         PluginActivityControl control = new PluginActivityControl(
                 CJProxyActivity.this, remotePlugin.getCurrentPluginActivity(),
