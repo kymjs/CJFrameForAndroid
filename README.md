@@ -1,10 +1,7 @@
 #[![OSL](http://www.kymjs.com/image/logo_s.png)](http://www.kymjs.com/works/)    
 CJFrameForAndroid简介
-**CJFrameForAndroid** 是一个实现android插件化开发的框架。使用CJFrameForAndroid，apk动态加载不再是难题，更重要的是可以轻松实现插件与APP项目之间的解耦。<br>
 
----
-
-CJFrame不再更新，尽管我不喜欢360，但仍推荐大家使用360的黑科技[DroidPlugin](https://github.com/Qihoo360/DroidPlugin)  四大组件均可支持插件化。
+CJFrame不再更新，推荐大家使用360的黑科技[DroidPlugin](https://github.com/Qihoo360/DroidPlugin)  四大组件均可支持插件化。
 
 ---
 
