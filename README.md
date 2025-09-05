@@ -1,4 +1,6 @@
-[![OSL](https://kymjs.com/qiniu/image/logo3.png)](https://kymjs.com/)    
+[![OSL](https://cdn.kymjs.com:8843/qiniu/image/logo3.png)](https://kymjs.com/works/)  
+=================  
+
 CJFrameForAndroid简介
 
 ---
@@ -34,3 +36,5 @@ CJActivityUtils.startPlugin(context,path);
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
+
+<img src="https://cdn.kymjs.com:8843/qiniu/image/qrcode_transfer.jpeg" width="50%" max-width="200" alt="在线乞讨"/>
